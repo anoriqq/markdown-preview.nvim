@@ -162,7 +162,7 @@ let g:mkdp_browserfunc = ''
 " sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
 "   middle: mean the cursor position alway show at the middle of the preview page
 "   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
+"   relative: mean the cursor position alway show at the relative position of the preview page
 " hide_yaml_meta: if hide yaml metadata, default is 1
 " sequence_diagrams: js-sequence-diagrams options
 " content_editable: if enable content editable for preview page, default: v:false
