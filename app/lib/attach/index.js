@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const neovim_1 = require("@chemzqm/neovim");
-const logger = require('../util/logger')('attach'); // tslint:disable-line
+const logger = require('../util/logger')('attach');
 let app;
 function default_1(options) {
     const nvim = (0, neovim_1.attach)(options);
