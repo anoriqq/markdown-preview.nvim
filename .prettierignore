@@ -1,0 +1,4 @@
+app/bin/**
+app/lib/**
+app/out/**
+app/_static/**
