@@ -241,6 +241,8 @@ Commands:
     [toc]
     [[_toc_]]
 
+[toc]
+
 **Image Size:**
 
 ``` markdown
@@ -253,11 +255,21 @@ Commands:
     Bob -> Alice : hello
     @enduml
 
+```plantuml
+@startuml
+Bob -> Alice : hello
+@enduml
+```
+
 Or
 
     ``` plantuml
     Bob -> Alice : hello
     ```
+
+```plantuml
+Bob -> Alice : hello
+```
 
 **katex:**
 
@@ -286,6 +298,16 @@ Or
         activity :active, 01-02-2019, 03-08-2019
     ```
 
+```mermaid
+gantt
+    dateFormat DD-MM-YYY
+    axisFormat %m/%y
+
+    title Example
+    section example section
+    activity :active, 01-02-2019, 03-08-2019
+```
+
 **js-sequence-diagrams:**
 
     ``` sequence-diagrams
@@ -294,6 +316,14 @@ Or
     China-->Andrew: How are you?
     Andrew->>China: I am good thanks!
     ```
+
+```sequence-diagrams
+Andrew->China: Says
+Note right of China: China thinks\nabout it
+China-->Andrew: How are you?
+Andrew->>China: I am good thanks!
+```
+
 **flowchart:**
 
     ``` flowchart
