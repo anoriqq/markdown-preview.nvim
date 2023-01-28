@@ -1,4 +1,4 @@
-import { attach, Attach, NeovimClient } from '@chemzqm/neovim'
+import { attach, type Attach, type NeovimClient } from '@chemzqm/neovim'
 
 const logger = require('../util/logger')('attach')
 

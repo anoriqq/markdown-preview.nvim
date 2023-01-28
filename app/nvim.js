@@ -9,7 +9,7 @@ const plugin = attach({
 })
 
 process.on('uncaughtException', function (err) {
-  let msg = `${MSG_PREFIX} uncaught exception: ` + err.stack
+  const msg = `${MSG_PREFIX} uncaught exception: ` + err.stack
   if (plugin.nvim) {
     plugin.nvim.call('mkdp#util#echo_messages', ['Error', msg.split('\n')])
   }

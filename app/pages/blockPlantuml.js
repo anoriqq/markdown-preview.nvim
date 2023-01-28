@@ -5,28 +5,28 @@ const plantumlEncoder = require("plantuml-encoder");
 module.exports = function umlPlugin(md, options) {
 
   function generateSourceDefault(umlCode, pluginOptions) {
-    var imageFormat = pluginOptions.imageFormat || 'img';
-    var diagramName = pluginOptions.diagramName || 'uml';
-    var server = pluginOptions.server || 'https://www.plantuml.com/plantuml';
-    var zippedCode = plantumlEncoder.encode(umlCode);
+    const imageFormat = pluginOptions.imageFormat || 'img';
+    const diagramName = pluginOptions.diagramName || 'uml';
+    const server = pluginOptions.server || 'https://www.plantuml.com/plantuml';
+    const zippedCode = plantumlEncoder.encode(umlCode);
 
     return server + '/' + imageFormat + '/' + zippedCode;
   }
 
   options = options || {};
 
-  var openMarker = options.openMarker || '@startuml',
-      openChar = openMarker.charCodeAt(0),
-      closeMarker = options.closeMarker || '@enduml',
-      closeChar = closeMarker.charCodeAt(0),
-      render = options.render || md.renderer.rules.image,
-      generateSource = options.generateSource || generateSourceDefault;
+  const openMarker = options.openMarker || '@startuml';
+      const openChar = openMarker.charCodeAt(0);
+      const closeMarker = options.closeMarker || '@enduml';
+      const closeChar = closeMarker.charCodeAt(0);
+      const render = options.render || md.renderer.rules.image;
+      const generateSource = options.generateSource || generateSourceDefault;
 
   function uml(state, startLine, endLine, silent) {
-    var nextLine, markup, params, token, i,
-        autoClosed = false,
-        start = state.bMarks[startLine] + state.tShift[startLine],
-        max = state.eMarks[startLine];
+    let nextLine; let markup; let params; let token; let i;
+        let autoClosed = false;
+        let start = state.bMarks[startLine] + state.tShift[startLine];
+        let max = state.eMarks[startLine];
 
     // Check out the first character quickly,
     // this should filter out most of non-uml blocks
@@ -78,7 +78,7 @@ module.exports = function umlPlugin(md, options) {
         continue;
       }
 
-      var closeMarkerMatched = true;
+      let closeMarkerMatched = true;
       for (i = 0; i < closeMarker.length; ++i) {
         if (closeMarker[i] !== state.src[start + i]) {
           closeMarkerMatched = false;
@@ -100,15 +100,15 @@ module.exports = function umlPlugin(md, options) {
       break;
     }
 
-    var contents = state.src
+    const contents = state.src
       .split('\n')
       .slice(startLine + 1, nextLine)
       .join('\n');
 
     // We generate a token list for the alt property, to mimic what the image parser does.
-    var altToken = [];
+    const altToken = [];
     // Remove leading space if any.
-    var alt = params ? params.slice(1) : 'uml diagram';
+    const alt = params ? params.slice(1) : 'uml diagram';
     state.md.inline.parse(
       alt,
       state.md,

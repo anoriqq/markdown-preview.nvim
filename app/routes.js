@@ -75,7 +75,7 @@ use(async (req, res, next) => {
         let tmpDirPath = fileDir
         while (tmpDirPath !== '/' && tmpDirPath !== '\\') {
           tmpDirPath = path.normalize(path.join(tmpDirPath, '..'))
-          let tmpImgPath = path.join(tmpDirPath, imgPath)
+          const tmpImgPath = path.join(tmpDirPath, imgPath)
           if (fs.existsSync(tmpImgPath)) {
             imgPath = tmpImgPath
             break

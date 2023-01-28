@@ -22,14 +22,14 @@ export const renderDot = () => {
     if (!list) {
         return
     }
-    var viz = new Viz();
+    const viz = new Viz();
     list.forEach(item => {
         viz.renderSVGElement(item.textContent).then(function (e) {
             item.textContent = ''
             item.appendChild(e)
         })
             .catch(e => {
-                var viz = new Viz();
+                const viz = new Viz();
                 console.error(`Parse dot Error: ${e}`)
             })
     })

@@ -10,7 +10,7 @@
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
-/******/ 	var installedModules = {};
+/******/ 	const installedModules = {};
 
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
@@ -20,7 +20,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			return installedModules[moduleId].exports;
 
 /******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
+/******/ 		const module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
@@ -59,27 +59,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var parseImageSize = __webpack_require__(1);
+	const parseImageSize = __webpack_require__(1);
 
 	function image_with_size(md, options) {
 	  return function(state, silent) {
-	    var attrs,
-	        code,
-	        label,
-	        labelEnd,
-	        labelStart,
-	        pos,
-	        ref,
-	        res,
-	        title,
-	        width = '',
-	        height = '',
-	        token,
-	        tokens,
-	        start,
-	        href = '',
-	        oldPos = state.pos,
-	        max = state.posMax;
+	    let attrs;
+	        let code;
+	        let label;
+	        let labelEnd;
+	        let labelStart;
+	        let pos;
+	        let ref;
+	        let res;
+	        let title;
+	        let width = '';
+	        let height = '';
+	        let token;
+	        let tokens;
+	        let start;
+	        let href = '';
+	        const oldPos = state.pos;
+	        const max = state.posMax;
 
 	    if (state.src.charCodeAt(state.pos) !== 0x21/* ! */) { return false; }
 	    if (state.src.charCodeAt(state.pos + 1) !== 0x5B/* [ */) { return false; }
@@ -220,7 +220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      state.pos = labelStart;
 	      state.posMax = labelEnd;
 
-	      var newState = new state.md.inline.State(
+	      const newState = new state.md.inline.State(
 	        state.src.slice(labelStart, labelEnd),
 	        state.md,
 	        state.env,
@@ -265,11 +265,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	function parseNextNumber(str, pos, max) {
-	  var code,
-	  start = pos,
-	  result = {
+	  let code;
+	  const start = pos;
+	  const result = {
 	    ok: false,
-	    pos: pos,
+	    pos,
 	    value: ''
 	  };
 
@@ -287,8 +287,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = function parseImageSize(str, pos, max) {
-	  var code,
-	  result = {
+	  let code;
+	  const result = {
 	    ok: false,
 	    pos: 0,
 	    width: '',
@@ -313,7 +313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  // parse width
-	  var resultW = parseNextNumber(str, pos, max);
+	  const resultW = parseNextNumber(str, pos, max);
 	  pos = resultW.pos;
 
 	  // next charactor must be 'x'
@@ -323,7 +323,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  pos++;
 
 	  // parse height
-	  var resultH = parseNextNumber(str, pos, max);
+	  const resultH = parseNextNumber(str, pos, max);
 	  pos = resultH.pos;
 
 	  result.width = resultW.value;

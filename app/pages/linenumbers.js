@@ -8,7 +8,7 @@ export default function injectLinenumbersPlugin (md) {
   // - We track only headings and paragraphs, at any level.
   // - TODO Footnotes content causes jumps. Level limit filters it automatically.
   function injectLineNumbers (tokens, idx, options, env, slf) {
-    var line
+    let line
     // if (tokens[idx].map && tokens[idx].level === 0) {
     if (tokens[idx].map) {
       line = tokens[idx].map[0]

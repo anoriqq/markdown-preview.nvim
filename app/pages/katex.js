@@ -13,13 +13,13 @@ for rendering output.
 // Test if potential opening or closing delimieter
 // Assumes that there is a "$" at state.src[pos]
 function isValidDelim (state, pos) {
-  var prevChar; var nextChar
+  let prevChar; let nextChar
 
-  var max = state.posMax
+  const max = state.posMax
 
-  var can_open = true
+  let can_open = true
 
-  var can_close = true
+  let can_close = true
 
   prevChar = pos > 0 ? state.src.charCodeAt(pos - 1) : -1
   nextChar = pos + 1 <= max ? state.src.charCodeAt(pos + 1) : -1
@@ -35,13 +35,13 @@ function isValidDelim (state, pos) {
   }
 
   return {
-    can_open: can_open,
-    can_close: can_close
+    can_open,
+    can_close
   }
 }
 
 function math_inline (state, silent) {
-  var start, match, token, res, pos, esc_count
+  let start, match, token, res, pos, esc_count
 
   if (state.src[state.pos] !== '$') { return false }
 
@@ -102,11 +102,11 @@ function math_inline (state, silent) {
 }
 
 function math_block (state, start, end, silent) {
-  var firstLine; var lastLine; var next; var lastPos; var found = false; var token
+  let firstLine; let lastLine; let next; let lastPos; let found = false; let token
 
-  var pos = state.bMarks[start] + state.tShift[start]
+  let pos = state.bMarks[start] + state.tShift[start]
 
-  var max = state.eMarks[start]
+  let max = state.eMarks[start]
 
   if (pos + 2 > max) { return false }
   if (state.src.slice(pos, pos + 2) !== '$$') { return false }
@@ -160,7 +160,7 @@ export default function math_plugin (md, options) {
   options.macros = options.macros || {}
 
   // set KaTeX as the renderer for markdown-it-simplemath
-  var katexInline = function (latex) {
+  const katexInline = function (latex) {
     const opt = {
       ...options
     }
@@ -175,11 +175,11 @@ export default function math_plugin (md, options) {
     }
   }
 
-  var inlineRenderer = function (tokens, idx) {
+  const inlineRenderer = function (tokens, idx) {
     return katexInline(tokens[idx].content)
   }
 
-  var katexBlock = function (latex) {
+  const katexBlock = function (latex) {
     const opt = {
       ...options
     }
@@ -194,7 +194,7 @@ export default function math_plugin (md, options) {
     }
   }
 
-  var blockRenderer = function (tokens, idx) {
+  const blockRenderer = function (tokens, idx) {
     return katexBlock(tokens[idx].content) + '\n'
   }
 
