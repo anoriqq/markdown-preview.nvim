@@ -1,27 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
 const neovim_1 = require("@chemzqm/neovim");
 const logger = require("../util/logger")("attach");
 let app;
 function default_1(options) {
     const nvim = (0, neovim_1.attach)(options);
-    nvim.on("notification", (method, args) => tslib_1.__awaiter(this, void 0, void 0, function* () {
+    nvim.on("notification", async (method, args) => {
         const opts = args[0] || args;
         const bufnr = opts.bufnr;
-        const buffers = yield nvim.buffers;
+        const buffers = await nvim.buffers;
         const buffer = buffers.find((b) => b.id === bufnr);
         if (method === "refresh_content") {
-            const winline = yield nvim.call("winline");
-            const currentWindow = yield nvim.window;
-            const winheight = yield nvim.call("winheight", currentWindow.id);
-            const cursor = yield nvim.call("getpos", ".");
-            const renderOpts = yield nvim.getVar("mkdp_preview_options");
-            const pageTitle = yield nvim.getVar("mkdp_page_title");
-            const theme = yield nvim.getVar("mkdp_theme");
-            const name = yield buffer.name;
-            const content = yield buffer.getLines();
-            const currentBuffer = yield nvim.buffer;
+            const winline = await nvim.call("winline");
+            const currentWindow = await nvim.window;
+            const winheight = await nvim.call("winheight", currentWindow.id);
+            const cursor = await nvim.call("getpos", ".");
+            const renderOpts = await nvim.getVar("mkdp_preview_options");
+            const pageTitle = await nvim.getVar("mkdp_page_title");
+            const theme = await nvim.getVar("mkdp_theme");
+            const name = await buffer.name;
+            const content = await buffer.getLines();
+            const currentBuffer = await nvim.buffer;
             app.refreshPage({
                 bufnr,
                 data: {
@@ -47,7 +46,7 @@ function default_1(options) {
                 bufnr,
             });
         }
-    }));
+    });
     nvim.on("request", (method, args, resp) => {
         if (method === "close_all_pages") {
             app.closeAllPages();
@@ -55,9 +54,9 @@ function default_1(options) {
         resp.send();
     });
     nvim.channelId
-        .then((channelId) => tslib_1.__awaiter(this, void 0, void 0, function* () {
-        yield nvim.setVar("mkdp_node_channel_id", channelId);
-    }))
+        .then(async (channelId) => {
+        await nvim.setVar("mkdp_node_channel_id", channelId);
+    })
         .catch((e) => {
         logger.error("channelId: ", e);
     });
