@@ -13,11 +13,23 @@ module.exports = {
   overrides: [
   ],
   parserOptions: {
-    ecmaVersion: 'latest'
+    ecmaVersion: 'latest',
+    project: ['./tsconfig.json']
   },
   plugins: [
     'react'
   ],
   rules: {
-  }
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    },
+  },
+  ignorePatterns: [
+    'app/bin/*',
+    'app/lib/*',
+    'app/out/*',
+    'app/_static/*'
+  ]
 }
