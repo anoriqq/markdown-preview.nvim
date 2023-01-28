@@ -761,12 +761,20 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
-"@chemzqm/neovim@^5.7.9":
-  version "5.7.9"
-  resolved "https://registry.yarnpkg.com/@chemzqm/neovim/-/neovim-5.7.9.tgz#78cb54d07d8e24533177140371e3ac1d694ff5f7"
-  integrity sha512-ou2lI650Rh+/3tS8HuiVim73RJSkCoVqJsf+Mqyw17+CGxbcCmXQqA2stT81j3QAXsbCF+5Ro/z152TrQLUUBg==
+"@chemzqm/msgpack-lite@^0.1.29":
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/@chemzqm/msgpack-lite/-/msgpack-lite-0.1.29.tgz#978e779f3b44504f5b792d5b6d2ee210ba79bda9"
+  integrity sha512-WbOT869c9BBLTpd51tQaFQRxwQZGaFzaaz03/df8zvXpHW8Xkfvw5u9SBxYuf+noJqeRKQxXsLWzeipMj2p3bQ==
   dependencies:
-    msgpack-lite "^0.1.26"
+    ieee754 "^1.1.8"
+    int64-buffer "^0.1.9"
+
+"@chemzqm/neovim@5.9.5":
+  version "5.9.5"
+  resolved "https://registry.yarnpkg.com/@chemzqm/neovim/-/neovim-5.9.5.tgz#2f9b0fb3cc2a09dfd5c547c3fcb04b0245939c79"
+  integrity sha512-m7lZj00lP1fNMzXITOV1uNdsYXjsmMbFB7Sl8OXfhRWYDQuBr6EPNzIzAonzIcmvTA2JNs8WMq0ZU76XXzpP6w==
+  dependencies:
+    "@chemzqm/msgpack-lite" "^0.1.29"
 
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
