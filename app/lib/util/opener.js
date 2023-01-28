@@ -1,11 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
 /*
  * fork from https://github.com/domenic/opener
  */
-const child_process_1 = tslib_1.__importDefault(require("child_process"));
-const os_1 = tslib_1.__importDefault(require("os"));
+const child_process_1 = __importDefault(require("child_process"));
+const os_1 = __importDefault(require("os"));
 module.exports = function opener(args, tool) {
     let platform = process.platform;
     args = [].concat(args);
@@ -14,33 +16,34 @@ module.exports = function opener(args, tool) {
     // this specific case we need to treat it as actually being Windows.
     // The "Windows-way" of opening things through cmd.exe works just fine here,
     // whereas using xdg-open does not, since there is no X Windows in WSL.
-    if (platform === 'linux' && os_1.default.release().toLowerCase().indexOf('microsoft') !== -1) {
-        platform = 'win32';
+    if (platform === "linux" &&
+        os_1.default.release().toLowerCase().includes("microsoft")) {
+        platform = "win32";
     }
     // http://stackoverflow.com/q/1480971/3191, but see below for Windows.
     let command;
     switch (platform) {
-        case 'win32': {
-            command = 'cmd.exe';
+        case "win32": {
+            command = "cmd.exe";
             if (tool) {
                 args.unshift(tool);
             }
             break;
         }
-        case 'darwin': {
-            command = 'open';
+        case "darwin": {
+            command = "open";
             if (tool) {
                 args.unshift(tool);
-                args.unshift('-a');
+                args.unshift("-a");
             }
             break;
         }
         default: {
-            command = tool || 'xdg-open';
+            command = tool || "xdg-open";
             break;
         }
     }
-    if (platform === 'win32') {
+    if (platform === "win32") {
         // On Windows, we really want to use the "start" command.
         // But, the rules regarding arguments with spaces, and escaping them with quotes,
         // can get really arcane. So the easiest way to deal with this is to pass off the
@@ -51,13 +54,13 @@ module.exports = function opener(args, tool) {
         // so we need to add a dummy empty-string window title: http://stackoverflow.com/a/154090/3191
         //
         // Additionally, on Windows ampersand needs to be escaped when passed to "start"
-        args = args.map(value => {
-            return value.replace(/&/g, '^&');
+        args = args.map((value) => {
+            return value.replace(/&/g, "^&");
         });
-        args = ['/c', 'start', '""'].concat(args);
+        args = ["/c", "start", '""'].concat(args);
     }
     return child_process_1.default.spawn(command, args, {
         shell: false,
-        detached: true
+        detached: true,
     });
 };

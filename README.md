@@ -61,10 +61,13 @@ call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp
 Or with [Vundle](https://github.com/vundlevim/vundle.vim):
 
 Place this in your `.vimrc` or `init.vim`,
+
 ```vim
 Plugin 'iamcco/markdown-preview.nvim'
 ```
+
 ... then run the following in vim (to complete the `Plugin` installation):
+
 ```vim
 :source %
 :PluginInstall
@@ -76,13 +79,13 @@ Or with [Packer.nvim](https://github.com/wbthomason/packer.nvim):
 Add this in your `init.lua or plugins.lua`
 
 ```lua
--- install without yarn or npm
+-- install without yarn
 use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
 })
 
-use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 ```
 
 Or by hand
@@ -100,6 +103,7 @@ cd markdown-preview.nvim
 yarn install
 yarn build
 ```
+
 Please make sure that you have installed `node.js` and `yarn`.
 Open `nvim` and run `:PackerInstall` to make it workable
 
@@ -162,7 +166,7 @@ let g:mkdp_browserfunc = ''
 " sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
 "   middle: mean the cursor position alway show at the middle of the preview page
 "   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
+"   relative: mean the cursor position alway show at the relative position of the preview page
 " hide_yaml_meta: if hide yaml metadata, default is 1
 " sequence_diagrams: js-sequence-diagrams options
 " content_editable: if enable content editable for preview page, default: v:false
@@ -241,9 +245,11 @@ Commands:
     [toc]
     [[_toc_]]
 
+[toc]
+
 **Image Size:**
 
-``` markdown
+```markdown
 ![image](https://user-images.githubusercontent.com/5492542/47603494-28e90000-da1f-11e8-9079-30646e551e7a.gif =400x200)
 ```
 
@@ -253,11 +259,21 @@ Commands:
     Bob -> Alice : hello
     @enduml
 
+```plantuml
+@startuml
+Bob -> Alice : hello
+@enduml
+```
+
 Or
 
     ``` plantuml
     Bob -> Alice : hello
     ```
+
+```plantuml
+Bob -> Alice : hello
+```
 
 **katex:**
 
@@ -286,6 +302,16 @@ Or
         activity :active, 01-02-2019, 03-08-2019
     ```
 
+```mermaid
+gantt
+    dateFormat DD-MM-YYY
+    axisFormat %m/%y
+
+    title Example
+    section example section
+    activity :active, 01-02-2019, 03-08-2019
+```
+
 **js-sequence-diagrams:**
 
     ``` sequence-diagrams
@@ -294,6 +320,14 @@ Or
     China-->Andrew: How are you?
     Andrew->>China: I am good thanks!
     ```
+
+```sequence-diagrams
+Andrew->China: Says
+Note right of China: China thinks\nabout it
+China-->Andrew: How are you?
+Andrew->>China: I am good thanks!
+```
+
 **flowchart:**
 
     ``` flowchart
@@ -387,7 +421,7 @@ Question: Why is the synchronised scrolling lagging?
 
 Answer: set `updatetime` to a small number, for instance: `set updatetime=100`
 
-*WSL 2 issue*: Can not open browser when using WSL 2 with terminal Vim.
+_WSL 2 issue_: Can not open browser when using WSL 2 with terminal Vim.
 
 > if you are using Ubuntu you can install xdg-utils using `sudo apt-get install -y xdg-utils`
 > checkout [issue 199](https://github.com/iamcco/markdown-preview.nvim/issues/199) for more detail.
@@ -409,7 +443,6 @@ Answer: Add the following to your NVIM init script:
 ```
 
 Replace "firefox" with "chrome" if you prefer. Both browsers recognize the `--new-window` option.
-
 
 ### About vim support
 
