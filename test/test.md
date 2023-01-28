@@ -30,20 +30,19 @@
 Bob -> Alice : hello
 @enduml
 
-
-``` mermaid
+```mermaid
 classDiagram
 A-->B
 ```
 
-``` mermaid
+```mermaid
 classDiagram
 A-->B
 ```
 
 ### flowchart
 
-``` flowchart
+```flowchart
 st=>start: Start|past:>http://www.google.com[blank]
 e=>end: End|future:>http://www.google.com
 op1=>operation: My Operation|past
@@ -62,17 +61,19 @@ c2(no)->op2->e
 ```
 
 javascript
+
 ```javascript
 function test() {
-    return 0
+  return 0;
 }
 
-console.log('hello world')
+console.log("hello world");
 
-test()
+test();
 ```
 
 bash
+
 ```bash
 # comment
 
@@ -81,16 +82,16 @@ export path=$PATH;/bin
 
 # Maxwell's Equations
 
-
-equation | description
-----------|------------
-$\nabla \cdot \vec{\mathbf{B}}  = 0$ | divergence of $\vec{\mathbf{B}}$ is zero
-$\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$ |  curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$
-$\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_
+| equation                                                                                                                                                                  | description                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| $\nabla \cdot \vec{\mathbf{B}}  = 0$                                                                                                                                      | divergence of $\vec{\mathbf{B}}$ is zero                                               |
+| $\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t}  = \vec{\mathbf{0}}$                                                          | curl of $\vec{\mathbf{E}}$ is proportional to the rate of change of $\vec{\mathbf{B}}$ |
+| $\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} = 4 \pi \rho$ | _wha?_                                                                                 |
 
 $\sqrt{3x-1}+(1+x)^2$
 
-$$\begin{array}{c}
+$$
+\begin{array}{c}
 
 \nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
 = \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
@@ -99,7 +100,8 @@ $$\begin{array}{c}
 
 \nabla \cdot \vec{\mathbf{B}} & = 0
 
-\end{array}$$
+\end{array}
+$$
 
 Anything between two $ characters will be treated as TeX math. The opening $ must
 have a non-space character immediately to its right, while the closing $ must
@@ -194,7 +196,7 @@ loop every day
 end
 ```
 
-``` mermaid
+```mermaid
 stateDiagram
 [*] --> Still
 Still --> [*]
@@ -204,7 +206,7 @@ Moving --> Crash
 Crash --> [*]
 ```
 
-``` mermaid
+```mermaid
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     ORDER ||--|{ LINE-ITEM : contains

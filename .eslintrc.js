@@ -3,33 +3,20 @@ module.exports = {
     browser: true,
     commonjs: true,
     es2021: true,
-    node: true
+    node: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'standard-with-typescript',
-    'prettier'
-  ],
-  overrides: [
-  ],
+  extends: ["plugin:react/recommended", "standard-with-typescript", "prettier"],
+  overrides: [],
   parserOptions: {
-    ecmaVersion: 'latest',
-    project: ['./tsconfig.json']
+    ecmaVersion: "latest",
+    project: ["./tsconfig.json"],
   },
-  plugins: [
-    'react'
-  ],
-  rules: {
-  },
+  plugins: ["react"],
+  rules: {},
   settings: {
     react: {
-      version: 'detect'
+      version: "detect",
     },
   },
-  ignorePatterns: [
-    'app/bin/*',
-    'app/lib/*',
-    'app/out/*',
-    'app/_static/*'
-  ]
-}
+  ignorePatterns: ["app/bin/*", "app/lib/*", "app/out/*", "app/_static/*"],
+};

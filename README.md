@@ -61,10 +61,13 @@ call minpac#add('iamcco/markdown-preview.nvim', {'do': 'packloadall! | call mkdp
 Or with [Vundle](https://github.com/vundlevim/vundle.vim):
 
 Place this in your `.vimrc` or `init.vim`,
+
 ```vim
 Plugin 'iamcco/markdown-preview.nvim'
 ```
+
 ... then run the following in vim (to complete the `Plugin` installation):
+
 ```vim
 :source %
 :PluginInstall
@@ -100,6 +103,7 @@ cd markdown-preview.nvim
 yarn install
 yarn build
 ```
+
 Please make sure that you have installed `node.js` and `yarn`.
 Open `nvim` and run `:PackerInstall` to make it workable
 
@@ -245,7 +249,7 @@ Commands:
 
 **Image Size:**
 
-``` markdown
+```markdown
 ![image](https://user-images.githubusercontent.com/5492542/47603494-28e90000-da1f-11e8-9079-30646e551e7a.gif =400x200)
 ```
 
@@ -417,7 +421,7 @@ Question: Why is the synchronised scrolling lagging?
 
 Answer: set `updatetime` to a small number, for instance: `set updatetime=100`
 
-*WSL 2 issue*: Can not open browser when using WSL 2 with terminal Vim.
+_WSL 2 issue_: Can not open browser when using WSL 2 with terminal Vim.
 
 > if you are using Ubuntu you can install xdg-utils using `sudo apt-get install -y xdg-utils`
 > checkout [issue 199](https://github.com/iamcco/markdown-preview.nvim/issues/199) for more detail.
@@ -439,7 +443,6 @@ Answer: Add the following to your NVIM init script:
 ```
 
 Replace "firefox" with "chrome" if you prefer. Both browsers recognize the `--new-window` option.
-
 
 ### About vim support
 
